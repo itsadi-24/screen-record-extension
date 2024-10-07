@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Chrome Extension",
+  "version": "1.0.0",
+  "description": "Screen recording and video creation Chrome extension",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "action": {
+    "default_popup": "index.html"
+  },
+  "background": {
+    "service_worker": "src/scripts/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/scripts/content.js"]
+    }
+  ]
+}
