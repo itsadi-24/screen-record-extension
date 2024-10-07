@@ -5,31 +5,33 @@ This Chrome extension allows users to screen record and automatically generate e
 ## Project Structure
 
 ```
-screen-record-extension/
+SCREEN-RECORD-EXTENSION/
+├── dist/
 ├── node_modules/
 ├── public/
+│   ├── scripts/
+│   └── manifest.json
 ├── src/
 │   ├── components/
-│   ├── pages/
-│   ├── scripts/
-│   │   ├── background.js
-│   │   └── content.js
 │   ├── App.jsx
-│   ├── main.jsx
 │   ├── index.css
-│   └── manifest.json
+│   └── main.jsx
 ├── .gitignore
+├── eslint.config.js
 ├── index.html
+├── package-lock.json
 ├── package.json
+├── postcss.config.js
+├── README.md
 ├── tailwind.config.js
-├── vite.config.js
-└── README.md
+└── vite.config.js
 ```
 
 ## File Descriptions
 
 ### Root Directory
 
+- `script`: contains scripts and logic.
 - `.gitignore`: Specifies files and directories that Git should ignore.
 - `index.html`: The main HTML file for the extension's popup.
 - `package.json`: Defines the project dependencies and scripts.
