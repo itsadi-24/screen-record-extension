@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import RecordRTC from 'recordrtc';
 import videojs from 'video.js';
 import 'video.js/dist/video-js.css';
@@ -49,16 +49,16 @@ const App = () => {
   };
 
   return (
-    <div className='p-4'>
+    <div className='p-4 bg-gray-100'>
       <h1 className='mb-4 text-2xl font-bold'>Screen Recorder</h1>
-      <div className='mb-4'>
+      <div className='mb-4 space-x-2'>
         <button
-          className={`mr-2 px-4 py-2 rounded ${
+          className={`px-4 py-2 rounded ${
             videoMode === 'demo' ? 'bg-blue-500 text-white' : 'bg-gray-200'
           }`}
           onClick={() => setVideoMode('demo')}
         >
-          Demo Video Mode
+          Demo Video
         </button>
         <button
           className={`px-4 py-2 rounded ${
@@ -66,7 +66,7 @@ const App = () => {
           }`}
           onClick={() => setVideoMode('explainer')}
         >
-          Explainer Video Mode
+          Explainer Video
         </button>
       </div>
       <div className='mb-4'>
@@ -91,11 +91,9 @@ const App = () => {
           <h2 className='mb-2 text-xl font-semibold'>Recorded Video:</h2>
           <video
             ref={videoRef}
-            className='video-js'
+            className='w-full video-js'
             controls
             preload='auto'
-            width='640'
-            height='360'
           />
           <button
             className='px-4 py-2 mt-2 text-white bg-blue-500 rounded'

@@ -3,7 +3,16 @@
   "name": "Screen Recorder Extension",
   "version": "1.0",
   "description": "A Chrome extension for screen recording and video creation",
-  "permissions": ["activeTab", "desktopCapture", "storage"],
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "downloads",
+    "desktopCapture",
+    "storage",
+    "displayMedia",
+    "audioCapture",
+    "scripting"
+  ],
   "action": {
     "default_popup": "index.html"
   },

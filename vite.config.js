@@ -1,7 +1,5 @@
 // import { defineConfig } from 'vite';
 // import react from '@vitejs/plugin-react';
-// // import { crx } from '@crxjs/vite-plugin';
-// // import manifest from './src/manifest.json';
 
 // export default defineConfig({
 //   plugins: [react()],
@@ -9,14 +7,39 @@
 //     outDir: 'dist',
 //     rollupOptions: {
 //       input: {
-//         background: 'src/scripts/background.js',
-//         content: 'src/scripts/content.js',
+//         main: 'index.html',
 //       },
 //     },
 //   },
 // });
+// import { defineConfig } from 'vite';
+// import react from '@vitejs/plugin-react';
+// import { resolve } from 'path';
+
+// export default defineConfig({
+//   plugins: [react()],
+//   build: {
+//     rollupOptions: {
+//       input: {
+//         main: resolve(__dirname, 'index.html'),
+//         background: resolve(__dirname, 'public/scripts/background.js'),
+//         content: resolve(__dirname, 'public/scripts/content.js'),
+//       },
+//       output: {
+//         entryFileNames: (chunkInfo) => {
+//           if (chunkInfo.name === 'background' || chunkInfo.name === 'content') {
+//             return 'scripts/[name].js';
+//           }
+//           return '[name].[hash].js';
+//         },
+//       },
+//     },
+//     outDir: 'dist',
+//   },
+// });
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { resolve } from 'path';
 
 export default defineConfig({
   plugins: [react()],
@@ -24,7 +47,16 @@ export default defineConfig({
     outDir: 'dist',
     rollupOptions: {
       input: {
-        main: 'index.html',
+        main: resolve(__dirname, 'index.html'),
+        background: resolve(__dirname, 'public/scripts/background.js'),
+        content: resolve(__dirname, 'public/scripts/content.js'),
+      },
+      output: {
+        entryFileNames: (chunkInfo) => {
+          return chunkInfo.name === 'background' || chunkInfo.name === 'content'
+            ? 'scripts/[name].js'
+            : '[name].js';
+        },
       },
     },
   },
