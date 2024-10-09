@@ -44,7 +44,6 @@ chrome.action.onClicked.addListener((tab) => {
   });
 });
 
-// ... rest of your background.js code ...
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.action === 'getScreenSources') {
     chrome.desktopCapture.chooseDesktopMedia(
